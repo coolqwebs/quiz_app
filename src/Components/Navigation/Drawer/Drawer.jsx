@@ -6,7 +6,7 @@ import BackDrop from "../../UI/BackDrop/BackDrop";
 const links = [
     { to: "/", label: "Список", exact: true },
     { to: "/auth", label: "Авторизация", exact: false },
-    { to: "/QuizCreator", label: "Создать тест", exact: false },
+    { to: "/quiz-creator", label: "Создать тест", exact: false },
 ];
 class Drawer extends Component {
     clickHandler = () => {
