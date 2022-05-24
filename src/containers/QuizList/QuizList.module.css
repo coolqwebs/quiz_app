@@ -1,0 +1,30 @@
+.QuizList {
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+    flex-grow: 1;
+    width: 100%;
+    background: linear-gradient(90deg, #fd8355, #f0576c, #f79cbd);
+    background-image: url(chernyy_seryy_temnyy_zelenyy_poverhnost_uzory_260_1366x768.jpg);
+}
+
+.QuizList h1 {
+    color: #fff;
+}
+.QuizList ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.QuizList li {
+    margin-bottom: 10px;
+}
+
+.QuizList li a {
+    text-decoration: none;
+    color: #fff;
+}
+.QuizList li a:hover {
+    color: #363f54;
+}
