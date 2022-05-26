@@ -1,4 +1,28 @@
 .LessonCreator{
     background: linear-gradient(270deg, #f0613c 0%, #f0783c 100%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.wrapper{
+    background-color: #eee;
+    max-width: 600px;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border: 3px solid #ccc;
+    border-radius: 15px
+}
+.wrapper > form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+#videoLink, #lessonDesc{
+    margin: 15px;
 }
