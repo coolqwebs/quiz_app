@@ -1,12 +1,14 @@
 import { combineReducers } from "redux";
 import authReducer from "./auth";
-import createReducer from "./create";
+import createQuizReducer from "./createQuiz";
+import createLessonReducer from "./createLesson";
 import lessonReducer from "./lesson";
 import quizReducer from "./quiz";
 
 export default combineReducers({
   quiz: quizReducer,
-  create: createReducer,
+  createQuiz: createQuizReducer,
+  createLesson: createLessonReducer,
   auth: authReducer,
   lesson: lessonReducer,
 });

@@ -13,7 +13,7 @@ import { connect } from "react-redux";
 import {
   createQuizQuestion,
   finishCreateQuiz,
-} from "../../store/actions/create";
+} from "../../store/actions/createQuiz";
 
 function createOptionControl(number) {
   return createControl(
@@ -182,7 +182,7 @@ class QuizCreator extends Component {
 
 function mapStateToProps(state) {
   return {
-    quiz: state.create.quiz,
+    quiz: state.quiz,
   };
 }
 function mapDispatchToProps(dispatch) {

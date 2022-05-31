@@ -8,16 +8,11 @@ import {
   validateForm,
 } from "../../Form/formFramework";
 import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
-
-/*
- *createLinkControl: to parse link and get the videi id to embed item
- *
- * add redux functionality to the control
- * add some server logic
- *
- *
- *
- */
+import { connect } from "react-redux";
+import {
+  createLessonHandler,
+  finishCreateLesson,
+} from "../../store/actions/createLesson";
 
 // const linkControl = (link) => {};
 
@@ -25,7 +20,7 @@ const createLessonControl = () => {
   return {
     title: createControl(
       {
-        label: "Enter lesson title",
+        label: "Enter lesson Title",
         errorMessage: "Title cannot be empty",
       },
       { required: true }
@@ -47,7 +42,7 @@ const createLessonControl = () => {
   };
 };
 
-const LessonCreator = () => {
+const LessonCreator = (props) => {
   const [lesson, setLesson] = useState(createLessonControl());
   const [isFormValid, setIsFormValid] = useState(false);
 
@@ -59,6 +54,7 @@ const LessonCreator = () => {
     e.preventDefault();
     setIsFormValid(false);
     setLesson(createLessonControl());
+    props.finishCreateLesson();
   };
 
   const changeHandler = (value, controlName) => {
@@ -81,7 +77,6 @@ const LessonCreator = () => {
       return (
         <Auxiliary key={controlName + index}>
           <Input
-            type={control.type || "text"}
             label={control.label}
             value={control.value}
             valid={control.valid}
@@ -101,34 +96,7 @@ const LessonCreator = () => {
       <div className={styles.wrapper}>
         <h1>Create a Lesson</h1>
         <form onSubmit={submitHandler}>
-          {renderControls}
-          {/* <Input
-            label="Lesson Title"
-            value={lesson.title.value}
-            valid={lesson.title.value}
-            shouldValidate={!!lesson.title.validation}
-            touched={lesson.title.touched}
-            errorMessage={lesson.title.errorMessage}
-            onChange={(event) => changeHandler(event.target.value)}
-          />
-          <Input
-            label="Video Link"
-            value={videoLink}
-            valid={lesson.video.value}
-            shouldValidate={!!lesson.video.validation}
-            touched={lesson.video.touched}
-            errorMessage={lesson.video.errorMessage}
-            onChange={(event) => setVideoLink(event.target.value)}
-          />
-          <Input
-            label="Lesson Desc"
-            value={lessonDesc}
-            valid={lesson.description.value}
-            shouldValidate={!!lesson.description.validation}
-            touched={lesson.description.touched}
-            errorMessage={lesson.description.errorMessage}
-            onChange={(event) => setLessonDesc(event.target.value)}
-          /> */}
+          {renderControls()}
           <input type="file" name="Lesson File" id="lesson-file" />
           <Button type="success" onClick={createLessonHandler}>
             Add Lesson
@@ -138,5 +106,15 @@ const LessonCreator = () => {
     </div>
   );
 };
-
-export default LessonCreator;
+const mapStateToProps = (state) => {
+  return {
+    lesson: state.lesson,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createLessonHandler: (item) => dispatch(createLessonHandler(item)),
+    finishCreateLesson: () => dispatch(finishCreateLesson()),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(LessonCreator);

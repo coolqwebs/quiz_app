@@ -10,6 +10,7 @@ import { Component } from "react";
 import { autoLogin } from "./store/actions/auth";
 import LessonList from "./containers/LessonList/LessonList";
 import LessonCreator from "./containers/LessonCreator/LessonCreator";
+import Lesson from "./containers/Lesson/Lesson";
 
 class App extends Component {
   componentDidMount() {
@@ -21,6 +22,7 @@ class App extends Component {
       <Switch>
         <Route path="/auth" component={Auth} />
         <Route path="/quiz/:id" component={Quiz} />
+        <Route path="/lesson/:id" component={Lesson} />
         <Route path="/lessonlist" component={LessonList} />
         <Route path="/" exact component={QuizList} />
         <Redirect to={"/"} />
@@ -32,6 +34,7 @@ class App extends Component {
           <Route path="/lesson-creator" component={LessonCreator} />
           <Route path="/quiz-creator" component={QuizCreator} />
           <Route path="/quiz/:id" component={Quiz} />
+          <Route path="/lesson/:id" component={Lesson} />
           <Route path="/logout" component={Logout} />
           <Route path="/" exact component={QuizList} />
           <Redirect to={"/"} />
