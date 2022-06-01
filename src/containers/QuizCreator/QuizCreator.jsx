@@ -13,7 +13,7 @@ import { connect } from "react-redux";
 import {
   createQuizQuestion,
   finishCreateQuiz,
-} from "../../store/actions/create";
+} from "../../store/actions/createQuiz";
 
 function createOptionControl(number) {
   return createControl(

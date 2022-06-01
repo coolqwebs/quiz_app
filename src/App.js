@@ -1,9 +1,12 @@
 import Layout from "./hoc/Layout/Layout";
 import { Redirect, Route, Switch } from "react-router-dom";
 import Quiz from "./containers/Quiz/Quiz";
+import Lesson from "./containers/Lesson/Lesson";
 import QuizList from "./containers/QuizList/QuizList";
+import LessonList from "./containers/LessonList/LessonList";
 import Auth from "./containers/Auth/Auth";
 import QuizCreator from "./containers/QuizCreator/QuizCreator";
+import LessonCreator from "./containers/LessonCreator/LessonCreator";
 import { connect } from "react-redux";
 import Logout from "./Components/Logout/Logout";
 import { Component } from "react";
@@ -19,6 +22,8 @@ class App extends Component {
       <Switch>
         <Route path="/auth" component={Auth} />
         <Route path="/quiz/:id" component={Quiz} />
+        <Route path="/lesson/:id" component={Lesson} />
+        <Route path="/lesson-list" component={LessonList} />
         <Route path="/" exact component={QuizList} />
         <Redirect to={"/"} />
       </Switch>
@@ -28,6 +33,9 @@ class App extends Component {
         <Switch>
           <Route path="/quiz-creator" component={QuizCreator} />
           <Route path="/quiz/:id" component={Quiz} />
+          <Route path="/lesson-list" component={LessonList} />
+          <Route path="/lesson/:id" component={Lesson} />
+          <Route path="/lesson-creator" component={LessonCreator} />
           <Route path="/logout" component={Logout} />
           <Route path="/" exact component={QuizList} />
           <Redirect to={"/"} />

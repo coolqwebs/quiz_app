@@ -30,12 +30,20 @@ class Drawer extends Component {
       cls.push(styles.close);
     }
 
-    let links = [{ to: "/", label: "Список", exact: true }];
+    let links = [
+      { to: "/", label: "Список Тестов", exact: true },
+      { to: "/lesson-list", label: "Список Уроков", exact: false },
+    ];
 
     if (this.props.isAuthentificated) {
       links.push({
         to: "/quiz-creator",
         label: "Создать тест",
+        exact: false,
+      });
+      links.push({
+        to: "/lesson-creator",
+        label: "Создать Урок",
         exact: false,
       });
       links.push({
