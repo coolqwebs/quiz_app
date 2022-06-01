@@ -1,5 +1,5 @@
 import { CREATE_QUIZ_QUESTION, RESET_QUIZ_QUESTION } from "./actionsTypes";
-import axios from "../../axios/axios-quiz";
+import testServer from "../../axios/axios-quiz";
 
 export function createQuizQuestion(item) {
   return {
@@ -16,7 +16,7 @@ export function resetQuizCreation() {
 
 export function finishCreateQuiz() {
   return async (dispatch, getState) => {
-    await axios.post("/quizes.json", getState().create.quiz);
+    await testServer.post("/quizes.json", getState().create.quiz);
     dispatch(resetQuizCreation());
   };
 }

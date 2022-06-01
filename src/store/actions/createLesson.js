@@ -1,5 +1,5 @@
 import { CREATE_LESSON, RESET_LESSON } from "./actionsTypes";
-import axios from "../../axios/axios-quiz";
+import lessonServer from "../../axios/axios-quiz";
 
 export function createLessonHandler(item) {
   return {
@@ -16,7 +16,7 @@ export function resetLessonCreation() {
 
 export function finishCreateLesson() {
   return async (dispatch, getState) => {
-    await axios.post("/lessons.json", getState().lesson);
+    await lessonServer.post("/lessons.json", getState().lesson);
     dispatch(resetLessonCreation());
   };
 }
